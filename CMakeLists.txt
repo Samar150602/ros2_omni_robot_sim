@@ -26,6 +26,15 @@ install(DIRECTORY scripts/
                          WORLD_EXECUTE WORLD_READ
         FILES_MATCHING PATTERN "*.py")
 
+install(DIRECTORY
+  launch
+  urdf
+  worlds
+  meshes
+  config
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
