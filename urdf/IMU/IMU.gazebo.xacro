@@ -3,8 +3,7 @@
   <xacro:macro name="imu_gazebo_v0">
     <gazebo reference="imu_link">
       <sensor type="imu" name="imu_sensor">
-        <plugin name="ignition::gazebo::systems::Imu" filename="libignition-gazebo-imu-system.so" >
-        </plugin>
+        <plugin name="ignition::gazebo::systems::Imu" filename="libignition-gazebo-imu-system.so" />
         <topic>/imu</topic>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <update_rate>50</update_rate> 
