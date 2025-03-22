@@ -1,12 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="laser_gazebo">
-    <!-- <gazebo>
-      <plugin filename="libignition-gazebo-sensors-system.so"
-        name="ignition::gazebo::systems::Sensors">
-        <render_engine>ogre2</render_engine>
-      </plugin>
-    </gazebo> -->
     <gazebo reference="laser_scan">
       <sensor name='gpu_lidar' type='gpu_lidar'>
         <topic>/scan</topic>
