@@ -13,9 +13,15 @@ ARGUMENTS = [
     DeclareLaunchArgument('world', 
                           default_value=os.path.join(get_package_share_directory(PACKAGE_NAME),"worlds","maze.sdf"),
                           description='Gazebo World'),
+    DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='true',
+            description='Use sim time if true'),
 ]
 
 def generate_launch_description():
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
     # Source Environment (Need it to be able find mesh files)
     pkg_path = get_package_share_directory(PACKAGE_NAME)
     ign_resource_path = SetEnvironmentVariable(
@@ -33,7 +39,7 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_path,'urdf','3w_omni_robot.urdf.xacro')
     robot_description_config = Command(['xacro ', xacro_file])
     
-    params = {'robot_description': robot_description_config}
+    params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time}
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -76,16 +82,19 @@ def generate_launch_description():
     
     # spawn controller 
     spawn_wheel_controller = Node(package='controller_manager', executable='spawner',
-                        arguments=['joint_state_broadcaster', 'wheel1_controller', 'wheel2_controller', 'wheel3_controller'],
+                        arguments=['joint_state_broadcaster', 
+                                    'wheel1_controller', 
+                                    'wheel2_controller', 
+                                    'wheel3_controller',
+                                    'camera_servo_controller'],
                         output='screen')
     
     # Create launch description and add actions
     ld = LaunchDescription(ARGUMENTS)
     ld.add_action(ign_resource_path)
     ld.add_action(node_robot_state_publisher)
-    # ld.add_action(robot_state_publisher)
     ld.add_action(ignition)
     ld.add_action(spawn_robot)
     ld.add_action(ros_gz_bridge)
-    # ld.add_action(spawn_wheel_controller)
+    ld.add_action(spawn_wheel_controller)
     return ld
