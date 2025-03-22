@@ -11,8 +11,12 @@
   <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/omni_wheel/omni_wheel.urdf.xacro" />   <!--omni-wheel-->
   <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/roller/roller.urdf.xacro" />   <!--roller-->
   <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/IMU/IMU.urdf.xacro" />   <!--IMU-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/laser/laser.urdf.xacro" />   Laser
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/laser/laser.urdf.xacro" />   <!-- Laser -->
   <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/camera_bracket/camera_bracket.urdf.xacro" />   <!--camera_bracket-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/gazebo_plugins.urdf.xacro" />   <!--Gazebo Plugins -->
+
+  <!-- ============ Gazebo Plugins ============== -->
+  <xacro:gazebo_plugins />
 
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
