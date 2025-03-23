@@ -8,6 +8,8 @@ Panels:
         - /Status1
         - /LaserScan1
         - /Camera1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 355
   - Class: rviz_common/Selection
@@ -99,8 +101,58 @@ Visualization Manager:
       Visibility:
         Grid: true
         LaserScan: true
+        TF: true
         Value: true
       Zoom Factor: 1
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_footprint:
+          Value: false
+        base_link:
+          Value: false
+        first_base_layer_link:
+          Value: false
+        first_wheel_link:
+          Value: false
+        imu_link:
+          Value: false
+        laser_scan:
+          Value: false
+        main_camera_bracket_link:
+          Value: false
+        main_camera_link:
+          Value: true
+        second_wheel_link:
+          Value: false
+        third_wheel_link:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        base_footprint:
+          base_link:
+            first_wheel_link:
+              {}
+            main_camera_bracket_link:
+              main_camera_link:
+                {}
+            second_wheel_link:
+              {}
+            third_wheel_link:
+              {}
+          first_base_layer_link:
+            laser_scan:
+              {}
+          imu_link:
+            {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -147,7 +199,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 5.98073148727417
+      Distance: 8.120177268981934
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -162,10 +214,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.785398006439209
+      Pitch: 0.6603981256484985
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.785398006439209
+      Yaw: 4.1235575675964355
     Saved: ~
 Window Geometry:
   Camera:
@@ -185,5 +237,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 335
-  Y: 123
+  X: 591
+  Y: 116
