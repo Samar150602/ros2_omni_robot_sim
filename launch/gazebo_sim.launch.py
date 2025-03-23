@@ -88,6 +88,11 @@ def generate_launch_description():
                                     'wheel3_controller',
                                     'camera_servo_controller'],
                         output='screen')
+
+    kinematics = Node(
+        package=PACKAGE_NAME,
+        executable="kinematics"
+    )
     
     # Create launch description and add actions
     ld = LaunchDescription(ARGUMENTS)
@@ -97,4 +102,5 @@ def generate_launch_description():
     ld.add_action(spawn_robot)
     ld.add_action(ros_gz_bridge)
     ld.add_action(spawn_wheel_controller)
+    ld.add_action(kinematics)
     return ld
