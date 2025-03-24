@@ -11,13 +11,27 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 
 add_executable(test_cpp_publisher src/test_publisher.cpp)
 ament_target_dependencies(test_cpp_publisher rclcpp std_msgs)
 install(TARGETS test_cpp_publisher DESTINATION lib/${PROJECT_NAME})
 
 add_executable(kinematics src/kinematics.cpp)
-ament_target_dependencies(kinematics rclcpp std_msgs geometry_msgs nav_msgs)
+ament_target_dependencies(
+  kinematics
+  rclcpp
+  std_msgs
+  geometry_msgs
+  nav_msgs
+  sensor_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+)
 install(TARGETS kinematics DESTINATION lib/${PROJECT_NAME})
 
 # install selected python code

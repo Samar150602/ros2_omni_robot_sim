@@ -91,7 +91,8 @@ def generate_launch_description():
 
     kinematics = Node(
         package=PACKAGE_NAME,
-        executable="kinematics"
+        executable="kinematics",
+        parameters=[{"use_sim_time": use_sim_time}]
     )
     
     # Create launch description and add actions

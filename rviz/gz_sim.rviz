@@ -110,7 +110,7 @@ Visualization Manager:
       Frames:
         All Enabled: false
         base_footprint:
-          Value: false
+          Value: true
         base_link:
           Value: false
         first_base_layer_link:
@@ -124,6 +124,8 @@ Visualization Manager:
         main_camera_bracket_link:
           Value: false
         main_camera_link:
+          Value: false
+        odom:
           Value: true
         second_wheel_link:
           Value: false
@@ -135,28 +137,29 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_footprint:
-          base_link:
-            first_wheel_link:
-              {}
-            main_camera_bracket_link:
-              main_camera_link:
+        odom:
+          base_footprint:
+            base_link:
+              first_wheel_link:
                 {}
-            second_wheel_link:
+              main_camera_bracket_link:
+                main_camera_link:
+                  {}
+              second_wheel_link:
+                {}
+              third_wheel_link:
+                {}
+            first_base_layer_link:
+              laser_scan:
+                {}
+            imu_link:
               {}
-            third_wheel_link:
-              {}
-          first_base_layer_link:
-            laser_scan:
-              {}
-          imu_link:
-            {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_footprint
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -199,7 +202,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 8.120177268981934
+      Distance: 4.463756084442139
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
