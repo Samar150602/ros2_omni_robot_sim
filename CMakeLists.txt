@@ -49,6 +49,7 @@ install(DIRECTORY scripts/
 install(DIRECTORY
   launch
   urdf
+  rviz
   worlds
   meshes
   config

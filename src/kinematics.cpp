@@ -19,7 +19,7 @@ using namespace std::chrono_literals;
 using std::placeholders::_1;
 using namespace std;
 
-#define WHEEL_RADIUS  0.028
+#define WHEEL_RADIUS  0.03
 #define ROBOT_RADIUS  0.088
 
 class OmniKinematics : public rclcpp::Node
