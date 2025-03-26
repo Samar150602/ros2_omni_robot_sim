@@ -53,6 +53,7 @@ install(DIRECTORY
   worlds
   meshes
   config
+  map
   DESTINATION share/${PROJECT_NAME}/
 )
 

@@ -20,7 +20,7 @@ ARGUMENTS = [
 ]
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     # Source Environment (Need it to be able find mesh files)
     pkg_path = get_package_share_directory(PACKAGE_NAME)
@@ -28,11 +28,6 @@ def generate_launch_description():
         name='IGN_GAZEBO_RESOURCE_PATH',
         value=[str(Path(pkg_path).parent.resolve())]
     )
-    # launch robot state publisher
-    # rsp_path = os.path.join(pkg_path, "launch", "rsp.launch.py")
-    # robot_state_publisher = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource([rsp_path])
-    # )
 
     # Create a robot_state_publisher node
     pkg_path = get_package_share_directory(PACKAGE_NAME)
