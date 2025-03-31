@@ -9,7 +9,11 @@ from pathlib import Path
 
 PACKAGE_NAME = "ros2_omni_robot_sim"
 
-ARGUMENTS = []
+ARGUMENTS = [
+    DeclareLaunchArgument('world', 
+                          default_value="maze2",
+                          description='Gazebo World'),
+]
 
 def generate_launch_description():
     # use_sim_time = LaunchConfiguration('use_sim_time')
@@ -18,7 +22,8 @@ def generate_launch_description():
                 get_package_share_directory(PACKAGE_NAME), 'launch', 'gazebo_sim.launch.py'
             ])
     gazebo_sim = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([gazebo_sim_path])
+        PythonLaunchDescriptionSource([gazebo_sim_path]),
+        launch_arguments={'world': LaunchConfiguration('world')}.items()
     )
 
     slam_toolbox_launch_path = PathJoinSubstitution([
@@ -31,7 +36,7 @@ def generate_launch_description():
     )
 
     rviz_config_path = PathJoinSubstitution([
-                get_package_share_directory(PACKAGE_NAME), 'rviz', 'gz_sim.rviz'
+                get_package_share_directory(PACKAGE_NAME), 'rviz', 'slam.rviz'
             ])
     rviz2 = Node(
             package='rviz2',

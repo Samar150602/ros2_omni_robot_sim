@@ -1,14 +1,18 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import TimerAction, IncludeLaunchDescription
+from launch.actions import TimerAction, IncludeLaunchDescription, DeclareLaunchArgument
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
 from launch_ros.actions import Node
 
 PACKAGE_NAME = "ros2_omni_robot_sim"
 
-ARGUMENTS = []
+ARGUMENTS = [
+    DeclareLaunchArgument('world', 
+                          default_value="maze2",
+                          description='Gazebo World'),
+]
 
 def generate_launch_description():
     # launch gazebo with spawned robot
@@ -16,7 +20,8 @@ def generate_launch_description():
                 get_package_share_directory(PACKAGE_NAME), 'launch', 'gazebo_sim.launch.py'
             ])
     gazebo_sim = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([gazebo_sim_path])
+        PythonLaunchDescriptionSource([gazebo_sim_path]),
+        launch_arguments={'world': LaunchConfiguration('world')}.items()
     )
 
     nav2_launch_path = PathJoinSubstitution([
@@ -24,7 +29,8 @@ def generate_launch_description():
             ])
 
     nav2_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([nav2_launch_path])
+        PythonLaunchDescriptionSource([nav2_launch_path]),
+        launch_arguments={'world': LaunchConfiguration('world')}.items()
     )
 
     delayed_nav2 = TimerAction(

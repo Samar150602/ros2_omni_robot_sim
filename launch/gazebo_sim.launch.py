@@ -3,7 +3,8 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command, TextSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from pathlib import Path
 
@@ -11,7 +12,7 @@ PACKAGE_NAME = "ros2_omni_robot_sim"
 
 ARGUMENTS = [
     DeclareLaunchArgument('world', 
-                          default_value=os.path.join(get_package_share_directory(PACKAGE_NAME),"worlds","maze.sdf"),
+                          default_value="maze2",
                           description='Gazebo World'),
     DeclareLaunchArgument(
             'use_sim_time',
@@ -26,7 +27,10 @@ def generate_launch_description():
     pkg_path = get_package_share_directory(PACKAGE_NAME)
     ign_resource_path = SetEnvironmentVariable(
         name='IGN_GAZEBO_RESOURCE_PATH',
-        value=[str(Path(pkg_path).parent.resolve())]
+        value=[
+            str(Path(pkg_path).parent.resolve()), ":",
+             os.path.join(pkg_path, 'worlds'),
+            ]
     )
 
     # Create a robot_state_publisher node
@@ -50,6 +54,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([ignition_launch_path]),
         launch_arguments=[
             ('gz_args', [LaunchConfiguration('world'),
+                         '.sdf',
                           ' -r',
                           ' -v 4'])
         ]
