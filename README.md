@@ -38,6 +38,8 @@ ros2 launch ros2_omni_robot_sim gazebo_sim.launch.py world:=<world_name>
 
 *please refer to [World Options](#world-options) Section for <world_name>*
 
+![Robot Control](gif/control.gif)
+
 ### 2. SLAM with slam_toolbox
 
 Start the SLAM by using the following command
@@ -50,6 +52,8 @@ ros2 launch ros2_omni_robot_sim slam_gazebo_sim.launch.py world:=<world_name>
 ```
 
 *please refer to [World Options](#world-options) Section for <world_name>*
+
+![Robot Control](gif/slam.gif)
 
 Save the map by using the following command
 
@@ -77,6 +81,8 @@ ros2 launch ros2_omni_robot_sim navigation_gazebo_sim.launch.py world:=<world_na
 ```
 
 *please refer to [World Options](#world-options) Section for <world_name>*
+
+![Robot Control](gif/navigation.gif)
 
 ## World Options
 
