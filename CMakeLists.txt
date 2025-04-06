@@ -20,9 +20,7 @@ add_executable(test_cpp_publisher src/test_publisher.cpp)
 ament_target_dependencies(test_cpp_publisher rclcpp std_msgs)
 install(TARGETS test_cpp_publisher DESTINATION lib/${PROJECT_NAME})
 
-add_executable(kinematics src/kinematics.cpp)
-ament_target_dependencies(
-  kinematics
+set(KINEMATICS_DEPENDENCIES
   rclcpp
   std_msgs
   geometry_msgs
@@ -32,7 +30,14 @@ ament_target_dependencies(
   tf2_ros
   tf2_geometry_msgs
 )
+
+add_executable(kinematics src/kinematics.cpp)
+ament_target_dependencies(kinematics ${KINEMATICS_DEPENDENCIES})
 install(TARGETS kinematics DESTINATION lib/${PROJECT_NAME})
+
+add_executable(kinematics_v2 src/kinematics_v2.cpp)
+ament_target_dependencies(kinematics_v2 ${KINEMATICS_DEPENDENCIES})
+install(TARGETS kinematics_v2 DESTINATION lib/${PROJECT_NAME})
 
 # install selected python code
 # install(PROGRAMS scripts/subscriber.py
