@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/omni_wheel/omni_wheel.transmission.xacro"/>
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/omni_wheel/omni_wheel.gazebo.xacro"/>
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/omni_wheel/omni_wheel.transmission.xacro"/>
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/omni_wheel/omni_wheel.gazebo.xacro"/>
   
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
 	<joint name="${prefix}_wheel_joint" type="continuous">

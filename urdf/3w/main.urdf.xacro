@@ -5,16 +5,16 @@
   <xacro:property name="M_PI" value="3.14159274" />
 
   <!-- xacro include file -->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/base/base.urdf.xacro" />  <!--base-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/base_layer/base_layer.urdf.xacro" />  <!--base-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/camera/camera.urdf.xacro" />   <!--camera-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/omni_wheel/omni_wheel.urdf.xacro" />   <!--omni-wheel-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/roller/roller.urdf.xacro" />   <!--roller-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/IMU/IMU.urdf.xacro" />   <!--IMU-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/laser/laser.urdf.xacro" />   <!-- Laser -->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/camera_bracket/camera_bracket.urdf.xacro" />   <!--camera_bracket-->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/gazebo_plugins.urdf.xacro" />   <!--Gazebo Plugins -->
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/ros2_control.urdf.xacro" />   <!-- Ros2 Control Plugins -->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/base/base.urdf.xacro" />  <!--base-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/base_layer/base_layer.urdf.xacro" />  <!--base-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/camera/camera.urdf.xacro" />   <!--camera-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/omni_wheel/omni_wheel.urdf.xacro" />   <!--omni-wheel-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/roller/roller.urdf.xacro" />   <!--roller-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/IMU/IMU.urdf.xacro" />   <!--IMU-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/laser/laser.urdf.xacro" />   <!-- Laser -->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/camera_bracket/camera_bracket.urdf.xacro" />   <!--camera_bracket-->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/gazebo_plugins.urdf.xacro" />   <!--Gazebo Plugins -->
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/ros2_control.urdf.xacro" />   <!-- Ros2 Control Plugins -->
 
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->

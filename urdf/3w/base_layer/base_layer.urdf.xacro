@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/base_layer/base_layer.gazebo.xacro" />
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/base_layer/base_layer.gazebo.xacro" />
 
   <xacro:macro name="base_layer" params="prefix parent xyz rpy">
     <joint name="${prefix}_base_layer_joint" type="fixed">

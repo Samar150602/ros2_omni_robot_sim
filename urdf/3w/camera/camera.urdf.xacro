@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="delirobo" xmlns:xacro="http://ros.org/wiki/xacro">
 
-	<xacro:include filename="$(find ros2_omni_robot_sim)/urdf/camera/camera.gazebo.xacro" />
+	<xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/camera/camera.gazebo.xacro" />
 
 	<xacro:macro name="camera_v0" params="prefix parent *joint_origin">
 		<joint name="${prefix}_camera_joint" type="fixed">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/base/base.gazebo.xacro"/>
+  <xacro:include filename="$(find ros2_omni_robot_sim)/urdf/3w/base/base.gazebo.xacro"/>
   
   <xacro:macro name="base_v0" params="parent *joint_origin">
 	<joint name="base_link_joint" type="fixed">
