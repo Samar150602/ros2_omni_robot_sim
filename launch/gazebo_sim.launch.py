@@ -23,7 +23,10 @@ ARGUMENTS = [
 
 robot_model_list = [
     '3w', 
-    '3w_v2'
+    '3w_v2',
+    '4w',
+    '5w',
+    '6w',
 ]
 
 def generate_launch_description():
@@ -88,7 +91,7 @@ def generate_launch_description():
                         output='screen')
     
     # gz bridge 
-    bridge_params = os.path.join(get_package_share_directory(PACKAGE_NAME),'config', 'gz_bridge', f'gz_bridge_{robot_model}.yaml')
+    bridge_params = os.path.join(get_package_share_directory(PACKAGE_NAME),'config', 'gz_bridge', f'gz_bridge.yaml')
     ros_gz_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
@@ -110,18 +113,26 @@ def generate_launch_description():
                                         'camera_servo_controller'],
                             output='screen')
     else:
+        N = int(robot_model[0])
+        arg = ['joint_state_broadcaster']
+        for i in range(N):
+            arg.append(f"wheel{i+1}_controller")
         spawn_wheel_controller = Node(package='controller_manager', executable='spawner',
-                            arguments=['joint_state_broadcaster', 
-                                        'wheel1_controller', 
-                                        'wheel2_controller', 
-                                        'wheel3_controller',
-                                        ],
+                            arguments=arg,
                             output='screen')
 
     kinematics = Node(
         package=PACKAGE_NAME,
         executable="kinematics",
         parameters=[{"use_sim_time": use_sim_time}]
+    )
+
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', os.path.join(pkg_path, 'rviz', 'test.rviz')]
     )
     
     # Create launch description and add actions
@@ -133,4 +144,5 @@ def generate_launch_description():
     ld.add_action(ros_gz_bridge)
     ld.add_action(spawn_wheel_controller)
     ld.add_action(kinematics)
+    # ld.add_action(rviz_node)
     return ld

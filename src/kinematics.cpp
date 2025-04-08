@@ -28,7 +28,18 @@ using namespace std;
 
 std::unordered_map<std::string, int> robot_wheel_count_list = {
   {"3w", 3},
-  {"3w_v2", 3}
+  {"3w_v2", 3},
+  {"4w", 4},
+  {"5w", 5},
+  {"6w", 6},
+};
+
+std::unordered_map<std::string, double> robot_offset_heading_list = {
+  {"3w", 0},
+  {"3w_v2", 0},
+  {"4w", -45},
+  {"5w", 0},
+  {"6w", 0},
 };
 class OmniKinematics : public rclcpp::Node
 {
@@ -42,8 +53,14 @@ public:
     heading_offset = heading_offset_;
 
     tM = init_transform_matrix(N, heading_offset_);
+    // cout << "tM:" << endl;
+    // cout << tM << endl;
+
     tMI = pseudo_inverse(tM);
     tMI = Eigen::MatrixXd(tMI.block(0, 0, 2, tMI.cols()));
+    // cout << "tMI:" << endl;
+    // cout << tMI << endl;
+    
     for(int i = 1; i < N+1; i++) {
       string joint_name = "omni_wheel_joint_" + to_string(i);
       wheel_joint_map_index[joint_name] = i - 1;
@@ -140,7 +157,7 @@ private:
         last_time = current_time;
         
         Eigen::Matrix2d rM;
-        rM << cos(yaw), sin(yaw),
+        rM << cos(yaw), -sin(yaw),
               sin(yaw), cos(yaw);
         Eigen::MatrixXd dp = rM * tMI * w * dt;
         
@@ -237,8 +254,16 @@ private:
 
   Eigen::MatrixXd pseudo_inverse(const Eigen::MatrixXd& A, double tolerance = 1e-8) {
     Eigen::JacobiSVD<Eigen::MatrixXd> svd(A, Eigen::ComputeThinU | Eigen::ComputeThinV);
-    svd.setThreshold(tolerance); // Set a threshold for small singular values
-    return svd.solve(Eigen::MatrixXd::Identity(A.cols(), A.cols()));  // Return pseudo-inverse
+    const auto& singularValues = svd.singularValues();
+    Eigen::MatrixXd S_inv = Eigen::MatrixXd::Zero(svd.matrixV().cols(), svd.matrixU().cols());
+  
+    for (int i = 0; i < singularValues.size(); ++i) {
+      if (singularValues(i) > tolerance) {
+        S_inv(i, i) = 1.0 / singularValues(i);
+      }
+    }
+  
+    return svd.matrixV() * S_inv * svd.matrixU().transpose();
   }
 };
 
@@ -259,7 +284,7 @@ int main(int argc, char * argv[])
 
   int wheel_count = robot_wheel_count_list[robot_model];
 
-  rclcpp::spin(std::make_shared<OmniKinematics>(wheel_count, ROBOT_RADIUS, WHEEL_RADIUS));
+  rclcpp::spin(std::make_shared<OmniKinematics>(wheel_count, ROBOT_RADIUS, WHEEL_RADIUS, robot_offset_heading_list[robot_model]));
   rclcpp::shutdown();
   return 0;
 }
