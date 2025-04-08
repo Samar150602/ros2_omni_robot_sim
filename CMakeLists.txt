@@ -35,10 +35,6 @@ add_executable(kinematics src/kinematics.cpp)
 ament_target_dependencies(kinematics ${KINEMATICS_DEPENDENCIES})
 install(TARGETS kinematics DESTINATION lib/${PROJECT_NAME})
 
-add_executable(kinematics_v2 src/kinematics_v2.cpp)
-ament_target_dependencies(kinematics_v2 ${KINEMATICS_DEPENDENCIES})
-install(TARGETS kinematics_v2 DESTINATION lib/${PROJECT_NAME})
-
 # install selected python code
 # install(PROGRAMS scripts/subscriber.py
 #         DESTINATION lib/${PROJECT_NAME})

@@ -109,11 +109,6 @@ def generate_launch_description():
                                         'wheel3_controller',
                                         'camera_servo_controller'],
                             output='screen')
-        kinematics = Node(
-            package=PACKAGE_NAME,
-            executable="kinematics",
-            parameters=[{"use_sim_time": use_sim_time}]
-        )
     else:
         spawn_wheel_controller = Node(package='controller_manager', executable='spawner',
                             arguments=['joint_state_broadcaster', 
@@ -122,13 +117,12 @@ def generate_launch_description():
                                         'wheel3_controller',
                                         ],
                             output='screen')
-        kinematics = Node(
-            package=PACKAGE_NAME,
-            executable="kinematics_v2",
-            parameters=[{"use_sim_time": use_sim_time}]
-        )
 
-
+    kinematics = Node(
+        package=PACKAGE_NAME,
+        executable="kinematics",
+        parameters=[{"use_sim_time": use_sim_time}]
+    )
     
     # Create launch description and add actions
     ld = LaunchDescription(ARGUMENTS)
