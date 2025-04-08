@@ -10,16 +10,25 @@ This repository contains a Gazebo Ignition  simulation that can be run with ROS2
 - ROS Humble
 - Gazebo Ignition Fortres
 
-## How to run
+## How to Use This Repository
 
 Please clone this repository to your ros2 workspace. The following assume your ros2 work space placed on your home directory with named **ros2_ws**
 
 ```bash
 cd ~/ros2_ws/src
-git git@github.com:YePeOn7/ros2_omni_robot_sim.git
+git clone git@github.com:YePeOn7/ros2_omni_robot_sim.git
 cd ~/ros2_ws
 colcon build
 source install/setup.bash
+```
+
+Determine the robot Model by set the environment variable of **OMNI_ROBOT_MODEL** with the following option:
+
+- 3w (3 wheel omni version 1) -> default
+- 3w_v2 (3 wheel omni version 2)
+
+```bash
+export OMNI_ROBOT_MODEL=<robot_model>
 ```
 
 After that you can run several simulation
