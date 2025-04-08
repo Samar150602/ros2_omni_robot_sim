@@ -15,17 +15,17 @@ controller_manager:
 wheel1_controller:
   ros__parameters:
     joints:
-      - first_wheel_joint
+      - omni_wheel_joint_1
 
 wheel2_controller:
   ros__parameters:
     joints:
-      - second_wheel_joint
+      - omni_wheel_joint_2
 
 wheel3_controller:
   ros__parameters:
     joints:
-      - third_wheel_joint
+      - omni_wheel_joint_3
 
 camera_servo_controller:
   ros__parameters:

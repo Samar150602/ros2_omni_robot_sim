@@ -4,7 +4,7 @@
         <hardware>
             <plugin>ign_ros2_control/IgnitionSystem</plugin>
         </hardware>
-        <joint name="first_wheel_joint">
+        <joint name="omni_wheel_joint_1">
             <command_interface name="velocity">
                 <param name="min">-10</param>
                 <param name="max">10</param>
@@ -12,7 +12,7 @@
             <state_interface name="position" />
             <state_interface name="velocity" />
         </joint>
-        <joint name="second_wheel_joint">
+        <joint name="omni_wheel_joint_2">
             <command_interface name="velocity">
                 <param name="min">-10</param>
                 <param name="max">10</param>
@@ -20,7 +20,7 @@
             <state_interface name="position" />
             <state_interface name="velocity" />
         </joint>
-        <joint name="third_wheel_joint">
+        <joint name="omni_wheel_joint_3">
             <command_interface name="velocity">
                 <param name="min">-10</param>
                 <param name="max">10</param>
