@@ -6,8 +6,8 @@
         <geometry>
           <cylinder radius="0.02" length="0.02" />
         </geometry>
-        <material name="blue">
-          <color rgba="0 0 1 1" />
+        <material name="yellow">
+          <color rgba="0.35 0.35 0.01 1" />
         </material>
       </visual>
     </link>

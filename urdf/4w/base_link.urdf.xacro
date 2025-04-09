@@ -8,11 +8,11 @@
     <link name="base_link">
       <visual>
         <geometry>
-          <mesh filename="package://ros2_omni_robot_sim/meshes/4w/base_link.stl" />
+          <mesh filename="package://ros2_omni_robot_sim/meshes/4w/base_link.dae" />
         </geometry>
-        <material name="base_color">
+        <!-- <material name="base_color">
           <color rgba="0.34 0.55 0.949 1" />
-        </material>
+        </material> -->
       </visual>
       <collision>
         <geometry>
