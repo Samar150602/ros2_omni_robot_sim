@@ -24,7 +24,7 @@ using namespace std;
 
 #define WHEEL_RADIUS        0.03
 #define ROBOT_RADIUS        0.088
-#define DEFAULT_ROBOT_MODEL "3w"
+#define DEFAULT_ROBOT_MODEL "3w_v2"
 
 std::unordered_map<std::string, int> robot_wheel_count_list = {
   {"3w", 3},

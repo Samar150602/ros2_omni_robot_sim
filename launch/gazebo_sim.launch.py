@@ -30,7 +30,7 @@ robot_model_list = [
 ]
 
 def generate_launch_description():
-    robot_model = os.environ.get("OMNI_ROBOT_MODEL", "3w")
+    robot_model = os.environ.get("OMNI_ROBOT_MODEL", "3w_v2")
 
     if robot_model not in robot_model_list:
         error_msg = f"The robot model specified in environment variable OMNI_ROBOT_MODEL is '{robot_model}', which is unknown.\nPlease choose from the following options:\n"
