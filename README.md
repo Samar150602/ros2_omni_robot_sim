@@ -107,6 +107,10 @@ ros2 launch ros2_omni_robot_sim navigation_gazebo_sim.launch.py world:=<world_na
 
 ![Robot Control](gif/navigation.gif)
 
+## Demo Video
+
+[![Demo Video](https://img.youtube.com/vi/WKV7GRxiQOE/maxresdefault.jpg)](https://youtu.be/WKV7GRxiQOE)
+
 ## World Options
 
 - maze1
