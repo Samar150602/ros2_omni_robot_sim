@@ -1,14 +1,31 @@
-# Three-Wheeled Omnidirectional Gazebo Simulation
+# Omnidirectional Robot Gazebo Simulation
 
 ## Introduction
 
-This repository contains a Gazebo Ignition  simulation that can be run with ROS2 for a 3-wheeled omnidirectional robot, useful for robotics research and simulation.
+This repository contains a Gazebo Ignition simulation that can be run with ROS 2, enabling the simulation of 3 to 6 wheeled omnidirectional robots. This setup is particularly useful for robotics research and simulation, allowing for the study and testing of complex robot behaviors and control strategies.
 
 ### Tested on
 
 - Ubuntu 22.04
 - ROS Humble
 - Gazebo Ignition Fortres
+
+## Available Robot Model
+
+![3W Robot Control](gif/3w.gif)  
+*3 wheel omni robot (3w)*
+
+![3W Robot Control v2](gif/3w_v2.gif)  
+*3 wheel omni robot version 2 (3w_v2) -> default*
+
+![4W Robot Control](gif/4w.gif)  
+*4 wheel omni robot (4w)*
+
+![5W Robot Control](gif/5w.gif)  
+*5 wheel omni robot (5w)*
+
+![6W Robot Control](gif/6w.gif)  
+*6 wheel omni robot (6w)*
 
 ## How to Use This Repository
 
@@ -22,16 +39,13 @@ colcon build
 source install/setup.bash
 ```
 
-Determine the robot Model by set the environment variable of **OMNI_ROBOT_MODEL** with the following option:
-
-- 3w (3 wheel omni version 1) -> default
-- 3w_v2 (3 wheel omni version 2)
+Determine the robot Model by setting the environment variable of **OMNI_ROBOT_MODEL** with the robot model listed on [Available Robot Model](#available-robot-model). For example, if you want to use model of **3 wheel omni robot version 2**, you can set as follow:
 
 ```bash
-export OMNI_ROBOT_MODEL=<robot_model>
+export OMNI_ROBOT_MODEL=3w_v2
 ```
 
-After that you can run several simulation
+After that you can run several of the following simulations
 
 ### 1. Manual Teleop
 
