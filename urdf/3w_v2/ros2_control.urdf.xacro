@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <ros2_control name="IgnitionSystem" type="system">
+    <ros2_control name="GazeboSystem" type="system">
         <hardware>
-            <plugin>ign_ros2_control/IgnitionSystem</plugin>
+            <!-- Use the correct plugin name that exists in your system -->
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+            
+            <!-- Required parameters -->
+            <param name="robot_param">robot_description</param>
+            <param name="robot_param_node">robot_state_publisher</param>
         </hardware>
         <joint name="omni_wheel_joint_1">
             <command_interface name="velocity">

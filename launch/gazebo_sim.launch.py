@@ -49,7 +49,7 @@ def generate_launch_description():
     # Source Environment (Need it to be able find mesh files)
     pkg_path = get_package_share_directory(PACKAGE_NAME)
     ign_resource_path = SetEnvironmentVariable(
-        name='IGN_GAZEBO_RESOURCE_PATH',
+        name='GZ_SIM_RESOURCE_PATH',
         value=[
             str(Path(pkg_path).parent.resolve()), ":",
              os.path.join(pkg_path, 'worlds'),
@@ -70,11 +70,11 @@ def generate_launch_description():
     )
 
     # launch gazebo
-    ignition_launch_path = PathJoinSubstitution([
+    gazebo_launch_path = PathJoinSubstitution([
                 get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py'
             ])
-    ignition = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([ignition_launch_path]),
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([gazebo_launch_path]),
         launch_arguments=[
             ('gz_args', [LaunchConfiguration('world'),
                          '.sdf',
@@ -95,11 +95,12 @@ def generate_launch_description():
     ros_gz_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
-        arguments=[
-            '--ros-args',
-            '-p',
-            f'config_file:={bridge_params}',
-        ]
+        parameters=[{'config_file': bridge_params}],
+        # arguments=[
+        #     '--ros-args',
+        #     '-p',
+        #     f'config_file:={bridge_params}',
+        # ]
     )
 
     
@@ -139,7 +140,7 @@ def generate_launch_description():
     ld = LaunchDescription(ARGUMENTS)
     ld.add_action(ign_resource_path)
     ld.add_action(node_robot_state_publisher)
-    ld.add_action(ignition)
+    ld.add_action(gazebo)
     ld.add_action(spawn_robot)
     ld.add_action(ros_gz_bridge)
     ld.add_action(spawn_wheel_controller)
