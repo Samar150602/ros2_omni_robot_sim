@@ -12,4 +12,5 @@ sudo apt install -y ros-jazzy-ros-gz \
   ros-jazzy-ros2-controllers \
   ros-jazzy-navigation2 \
   ros-jazzy-nav2-bringup \
-  ros-jazzy-controller-manager
+  ros-jazzy-controller-manager \
+  ros-jazzy-slam-toolbox
