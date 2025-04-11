@@ -6,9 +6,9 @@ This repository contains a Gazebo Ignition simulation that can be run with ROS 2
 
 ### Tested on
 
-- Ubuntu 22.04
-- ROS Humble
-- Gazebo Ignition Fortres
+- Ubuntu 24.04
+- ROS Jazzy
+- Gazebo Harmonic
 
 ## Available Robot Model
 
@@ -35,6 +35,18 @@ Please clone this repository to your ros2 workspace. The following assume your r
 cd ~/ros2_ws/src
 git clone git@github.com:YePeOn7/ros2_omni_robot_sim.git
 cd ~/ros2_ws
+```
+
+Install dependency by running the following command
+
+```bash
+sudo chmod +x install_dependency.sh
+./install_dependency.sh
+```
+
+build the package by using the following command
+
+```bash
 colcon build
 source install/setup.bash
 ```
