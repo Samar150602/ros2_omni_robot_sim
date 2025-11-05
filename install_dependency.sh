@@ -6,11 +6,11 @@ curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/
     sudo apt update && \
     sudo apt install -y gz-harmonic
 
-sudo apt install -y ros-jazzy-ros-gz \
-  ros-jazzy-gz-ros2-control \
-  ros-jazzy-ros2-control \
-  ros-jazzy-ros2-controllers \
-  ros-jazzy-navigation2 \
-  ros-jazzy-nav2-bringup \
-  ros-jazzy-controller-manager \
-  ros-jazzy-slam-toolbox
+sudo apt install -y ros-humble-ros-gz \
+  ros-humble-gz-ros2-control \
+  ros-humble-ros2-control \
+  ros-humble-ros2-controllers \
+  ros-humble-navigation2 \
+  ros-humble-nav2-bringup \
+  ros-humble-controller-manager \
+  ros-humble-slam-toolbox
